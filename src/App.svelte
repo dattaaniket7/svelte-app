@@ -40,6 +40,9 @@
 
 <button on:click={addTodo}>Add a new Todo</button>
 
+<h1>So this is coming from APP</h1>
+<Nested x={0} y={0} />
+
 <style>
   h1 {
     color: lightblue;
