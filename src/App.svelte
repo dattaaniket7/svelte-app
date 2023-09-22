@@ -2,6 +2,8 @@
   let name = "Stuart <button>Minnion</button>";
   import src from "./assets/giphy.gif";
   import Nested from "./lib/Nested.svelte";
+  import PackageInfo from "./lib/PackageInfo.svelte";
+
   let counter = 0;
 
   function increment() {
@@ -25,6 +27,13 @@
     // todos = todos;
     todos = [...todos, "code"];
   }
+
+  const pkg = {
+    name: "svelte",
+    speed: "blazing",
+    version: 4,
+    website: "https://svelte.dev",
+  };
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -43,6 +52,13 @@
 <h1>So this is coming from APP</h1>
 <!-- <Nested x={0} y={0} /> -->
 <Nested />
+
+<PackageInfo
+  name={pkg.name}
+  speed={pkg.speed}
+  version={pkg.version}
+  website={pkg.website}
+/>
 
 <style>
   h1 {
