@@ -1,4 +1,6 @@
 <script>
+  // @ts-nocheck
+
   let name = "Stuart <button>Minnion</button>";
   import src from "./assets/giphy.gif";
   import Nested from "./lib/Nested.svelte";
@@ -6,9 +8,9 @@
 
   let counter = 0;
 
-  function increment() {
-    counter += 1;
-  }
+  // function increment() {
+  //   counter += 1;
+  // }
   $: doubled = counter * 2;
 
   $: {
@@ -36,6 +38,12 @@
   };
 
   let user = null;
+
+  let count = 0;
+
+  function increment() {
+    count += 1;
+  }
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -68,6 +76,19 @@
   <h1>Please sign in</h1>
 {:else}
   <h1>Welcome {@html name} 🚨</h1>
+{/if}
+
+<button on:click={increment}>
+  Clicked {count}
+  {count === 1 ? "time" : "times"}
+</button>
+
+{#if count > 10}
+  <p>{count} is greater than 10</p>
+{:else if count < 5}
+  <p>{count} is less than 5</p>
+{:else}
+  <p>{count} is between 0 and 10</p>
 {/if}
 
 <style>
