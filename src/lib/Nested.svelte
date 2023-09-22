@@ -1,6 +1,8 @@
 <script>
-  export let x;
-  export let y;
+  //   export let x = 0;
+  //   export let y = 0;
+  let x = 0;
+  let y = 0;
 </script>
 
 <h1>Nested Component</h1>

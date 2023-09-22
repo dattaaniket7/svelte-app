@@ -32,16 +32,17 @@
 <Nested />
 <button on:click={increment}>
   Increase my counter {counter}
-</button> -->
+</button>
 <h1>{counter}</h1>
 <button on:click={() => (counter += 1)}>Increment</button>
 <button on:click={() => (counter -= 1)}>Decrement</button>
 <h1>{doubled} Double</h1>
 
-<button on:click={addTodo}>Add a new Todo</button>
+<button on:click={addTodo}>Add a new Todo</button> -->
 
 <h1>So this is coming from APP</h1>
-<Nested x={0} y={0} />
+<!-- <Nested x={0} y={0} /> -->
+<Nested />
 
 <style>
   h1 {
