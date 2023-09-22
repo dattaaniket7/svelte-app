@@ -13,6 +13,18 @@
     console.log(counter);
     if (counter > 10) alert("BIG BOY");
   }
+
+  let todos = ["eat", "sleep", "go to office", "work", "repeat"];
+
+  $: {
+    console.log(todos);
+  }
+
+  function addTodo() {
+    // todos.push("drink");
+    // todos = todos;
+    todos = [...todos, "code"];
+  }
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -25,6 +37,8 @@
 <button on:click={() => (counter += 1)}>Increment</button>
 <button on:click={() => (counter -= 1)}>Decrement</button>
 <h1>{doubled} Double</h1>
+
+<button on:click={addTodo}>Add a new Todo</button>
 
 <style>
   h1 {
