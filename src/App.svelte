@@ -44,6 +44,17 @@
   function increment() {
     count += 1;
   }
+
+  const colors = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet",
+  ];
+  let selected = colors[0];
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -57,10 +68,10 @@
 <button on:click={() => (counter -= 1)}>Decrement</button>
 <h1>{doubled} Double</h1>
 
-<button on:click={addTodo}>Add a new Todo</button> -->
+<button on:click={addTodo}>Add a new Todo</button>
 
 <h1>So this is coming from APP</h1>
-<!-- <Nested x={0} y={0} /> -->
+<Nested x={0} y={0} />
 <Nested />
 
 <PackageInfo
@@ -89,10 +100,91 @@
   <p>{count} is less than 5</p>
 {:else}
   <p>{count} is between 0 and 10</p>
-{/if}
+{/if} -->
+
+<h1 style="color: {selected};">Pick a color</h1>
+
+<!-- <div>
+  <button
+    aria-current={selected === "red"}
+    aria-label="red"
+    style="background: red;"
+    on:click={() => (selected = "red")}
+  />
+  <button
+    aria-current={selected === "orange"}
+    aria-label="orange"
+    style="background: orange;"
+    on:click={() => (selected = "orange")}
+  />
+  <button
+    aria-current={selected === "yellow"}
+    aria-label="yellow"
+    style="background: yellow;"
+    on:click={() => (selected = "yellow")}
+  />
+  <button
+    aria-current={selected === "green"}
+    aria-label="green"
+    style="background: green;"
+    on:click={() => (selected = "green")}
+  />
+  <button
+    aria-current={selected === "blue"}
+    aria-label="blue"
+    style="background: blue;"
+    on:click={() => (selected = "blue")}
+  />
+  <button
+    aria-current={selected === "indigo"}
+    aria-label="indigo"
+    style="background: indigo;"
+    on:click={() => (selected = "indigo")}
+  />
+  <button
+    aria-current={selected === "violet"}
+    aria-label="violet"
+    style="background: violet;"
+    on:click={() => (selected = "violet")}
+  />
+</div> -->
+
+<div>
+  {#each colors as color, i}
+    <button
+      aria-current={selected === color}
+      aria-label={color}
+      style="background: {color}"
+      on:click={() => (selected = color)}>{i + 1}</button
+    >
+  {/each}
+</div>
 
 <style>
   h1 {
-    color: lightblue;
+    /* color: lightblue; */
+    transition: color 0.2s;
+  }
+
+  div {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 5px;
+    max-width: 400px;
+  }
+
+  button {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color, #fff);
+    transform: translate(-2px, -2px);
+    filter: drop-shadow(2px, 2px, 3px, rgba(0, 0, 0, 0.2));
+    transition: all 0.1s;
+  }
+
+  button[aria-current="true"] {
+    transform: none;
+    filter: none;
+    box-shadow: inset 3px, 3px, 4px, rgba(0, 0, 0, 0.2);
   }
 </style>
