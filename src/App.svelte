@@ -8,6 +8,11 @@
     counter += 1;
   }
   $: doubled = counter * 2;
+
+  $: {
+    console.log(counter);
+    if (counter > 10) alert("BIG BOY");
+  }
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
