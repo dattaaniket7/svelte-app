@@ -6,9 +6,9 @@
 
   let counter = 0;
 
-  // function increment() {
-  //   counter += 1;
-  // }
+  function increment() {
+    counter += 1;
+  }
   $: doubled = counter * 2;
 
   $: {
@@ -35,11 +35,7 @@
     website: "https://svelte.dev",
   };
 
-  let count = 0;
-
-  function increment() {
-    count += 1;
-  }
+  let user = null;
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -66,12 +62,12 @@
   website={pkg.website}
 />
 
-<button on:click={increment}
-  >Clicked {count} {count === 1 ? "time" : "times"}</button
->
+<button on:click={() => (user = !user)}>Sign In</button>
 
-{#if count > 10}
-  <p>{count} is greater than 10</p>
+{#if !user}
+  <h1>Please sign in</h1>
+{:else}
+  <h1>Welcome {@html name} 🚨</h1>
 {/if}
 
 <style>
