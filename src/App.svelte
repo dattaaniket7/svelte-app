@@ -55,6 +55,13 @@
     "violet",
   ];
   let selected = colors[0];
+
+  const users = [
+    { name: "oldMonk", id: crypto.randomUUID() },
+    { name: "xpert", id: crypto.randomUUID() },
+    { name: "kartos", id: crypto.randomUUID() },
+    { name: "ed", id: crypto.randomUUID() },
+  ];
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -159,6 +166,12 @@
     >
   {/each}
 </div>
+
+{#each users as user (user.id)}
+  <div>
+    <h1>{user.name}</h1>
+  </div>
+{/each}
 
 <style>
   h1 {
