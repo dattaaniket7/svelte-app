@@ -1,67 +1,72 @@
 <script>
-  // @ts-nocheck
+  // let name = "Stuart <button>Minnion</button>";
+  // import src from "./assets/giphy.gif";
+  // import Nested from "./lib/Nested.svelte";
+  // import PackageInfo from "./lib/PackageInfo.svelte";
+  import { getRandomNumber } from "./lib/utils";
 
-  let name = "Stuart <button>Minnion</button>";
-  import src from "./assets/giphy.gif";
-  import Nested from "./lib/Nested.svelte";
-  import PackageInfo from "./lib/PackageInfo.svelte";
-
-  let counter = 0;
+  // let counter = 0;
 
   // function increment() {
   //   counter += 1;
   // }
-  $: doubled = counter * 2;
+  // $: doubled = counter * 2;
 
-  $: {
-    console.log(counter);
-    if (counter > 10) alert("BIG BOY");
+  // $: {
+  //   console.log(counter);
+  //   if (counter > 10) alert("BIG BOY");
+  // }
+
+  // let todos = ["eat", "sleep", "go to office", "work", "repeat"];
+
+  // $: {
+  //   console.log(todos);
+  // }
+
+  // function addTodo() {
+  //   todos.push("drink");
+  //   todos = todos;
+  //   todos = [...todos, "code"];
+  // }
+
+  // const pkg = {
+  //   name: "svelte",
+  //   speed: "blazing",
+  //   version: 4,
+  //   website: "https://svelte.dev",
+  // };
+
+  // let user = null;
+
+  // let count = 0;
+
+  // function increment() {
+  //   count += 1;
+  // }
+
+  // const colors = [
+  //   "red",
+  //   "orange",
+  //   "yellow",
+  //   "green",
+  //   "blue",
+  //   "indigo",
+  //   "violet",
+  // ];
+  // let selected = colors[0];
+
+  // const users = [
+  //   { name: "oldMonk", id: crypto.randomUUID() },
+  //   { name: "xpert", id: crypto.randomUUID() },
+  //   { name: "kartos", id: crypto.randomUUID() },
+  //   { name: "ed", id: crypto.randomUUID() },
+  // ];
+
+  let promise = getRandomNumber();
+
+  function handleClick() {
+    promise = getRandomNumber();
   }
-
-  let todos = ["eat", "sleep", "go to office", "work", "repeat"];
-
-  $: {
-    console.log(todos);
-  }
-
-  function addTodo() {
-    // todos.push("drink");
-    // todos = todos;
-    todos = [...todos, "code"];
-  }
-
-  const pkg = {
-    name: "svelte",
-    speed: "blazing",
-    version: 4,
-    website: "https://svelte.dev",
-  };
-
-  let user = null;
-
-  let count = 0;
-
-  function increment() {
-    count += 1;
-  }
-
-  const colors = [
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "indigo",
-    "violet",
-  ];
-  let selected = colors[0];
-
-  const users = [
-    { name: "oldMonk", id: crypto.randomUUID() },
-    { name: "xpert", id: crypto.randomUUID() },
-    { name: "kartos", id: crypto.randomUUID() },
-    { name: "ed", id: crypto.randomUUID() },
-  ];
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
@@ -107,11 +112,11 @@
   <p>{count} is less than 5</p>
 {:else}
   <p>{count} is between 0 and 10</p>
-{/if} -->
+{/if}
 
 <h1 style="color: {selected};">Pick a color</h1>
 
-<!-- <div>
+<div>
   <button
     aria-current={selected === "red"}
     aria-label="red"
@@ -154,7 +159,7 @@
     style="background: violet;"
     on:click={() => (selected = "violet")}
   />
-</div> -->
+</div>
 
 <div>
   {#each colors as color, i}
@@ -171,11 +176,21 @@
   <div>
     <h1>{user.name}</h1>
   </div>
-{/each}
+{/each} -->
+
+<button on:click={handleClick}>generate random number</button>
+
+{#await promise}
+  <p>Data is coming in</p>
+{:then number}
+  <p>The data is {@html number}</p>
+{:catch error}
+  <p>{@html error.messsage}</p>
+{/await}
 
 <style>
-  h1 {
-    /* color: lightblue; */
+  /* h1 {
+    color: lightblue;
     transition: color 0.2s;
   }
 
@@ -199,5 +214,5 @@
     transform: none;
     filter: none;
     box-shadow: inset 3px, 3px, 4px, rgba(0, 0, 0, 0.2);
-  }
+  } */
 </style>
