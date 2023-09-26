@@ -4,6 +4,7 @@
   // import Nested from "./lib/Nested.svelte";
   // import PackageInfo from "./lib/PackageInfo.svelte";
   // import { getRandomNumber } from "./lib/utils";
+  import Inner from "./lib/Inner.svelte";
 
   // let counter = 0;
 
@@ -73,6 +74,10 @@
   //   m.x = event.clientX;
   //   m.y = event.clientY;
   // }
+
+  function handleMessage(event) {
+    alert(event.detail.text);
+  }
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -200,6 +205,8 @@
 </div> -->
 
 <button on:click|once={() => alert("clicked")}>Click me</button>
+
+<Inner on:message={handleMessage} />
 
 <style>
   /* h1 {
