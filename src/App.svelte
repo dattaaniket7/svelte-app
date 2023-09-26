@@ -5,6 +5,7 @@
   // import PackageInfo from "./lib/PackageInfo.svelte";
   // import { getRandomNumber } from "./lib/utils";
   import Inner from "./lib/Inner.svelte";
+  import Outer from "./lib/Outer.svelte";
 
   // let counter = 0;
 
@@ -206,7 +207,9 @@
 
 <button on:click|once={() => alert("clicked")}>Click me</button>
 
-<Inner on:message={handleMessage} />
+<!-- <Inner on:message={handleMessage} /> -->
+
+<Outer on:message={handleMessage} />
 
 <style>
   /* h1 {
