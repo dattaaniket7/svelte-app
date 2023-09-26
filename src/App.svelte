@@ -55,68 +55,75 @@
   // ];
   // let selected = colors[0];
 
-  const users = [
-    { name: "oldMonk", id: crypto.randomUUID() },
-    { name: "xpert", id: crypto.randomUUID() },
-    { name: "kartos", id: crypto.randomUUID() },
-    { name: "ed", id: crypto.randomUUID() },
-  ];
+  // const users = [
+  //   { name: "oldMonk", id: crypto.randomUUID() },
+  //   { name: "xpert", id: crypto.randomUUID() },
+  //   { name: "kartos", id: crypto.randomUUID() },
+  //   { name: "ed", id: crypto.randomUUID() },
+  // ];
 
   // let promise = getRandomNumber();
 
   // function handleClick() {
   //   promise = getRandomNumber();
   // }
+
+  // let m = { x: 0, y: 0 };
+  // function handleMove(event) {
+  //   m.x = event.clientX;
+  //   m.y = event.clientY;
+  // }
 </script>
 
-<!-- <h1>Hello {@html name.toUpperCase()}</h1>
-<img {src} alt="{name} alert" /> -->
+<!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
+<!-- <img {src} alt="{name} alert" /> -->
 <Nested />
+
 <!-- <button on:click={increment}>
   Increase my counter {counter}
 </button>
 <h1>{counter}</h1>
 <button on:click={() => (counter += 1)}>Increment</button>
 <button on:click={() => (counter -= 1)}>Decrement</button>
-<h1>{doubled} Double</h1>
+<h1>{doubled} Double</h1> -->
 
-<button on:click={addTodo}>Add a new Todo</button>
+<!-- <button on:click={addTodo}>Add a new Todo</button> -->
 
-<h1>So this is coming from APP</h1>
-<Nested x={0} y={0} />
-<Nested />
+<!-- <h1>So this is coming from APP</h1> -->
+<!-- <Nested x={0} y={0} /> -->
+<!-- <Nested /> -->
 
-<PackageInfo
+<!-- <PackageInfo
   name={pkg.name}
   speed={pkg.speed}
   version={pkg.version}
   website={pkg.website}
-/>
+/> -->
 
-<button on:click={() => (user = !user)}>Sign In</button>
+<!-- <button on:click={() => (user = !user)}>Sign In</button>
 
 {#if !user}
   <h1>Please sign in</h1>
 {:else}
   <h1>Welcome {@html name} 🚨</h1>
-{/if}
+{/if} -->
 
-<button on:click={increment}>
+<!-- <button on:click={increment}>
   Clicked {count}
   {count === 1 ? "time" : "times"}
-</button>
+</button> -->
 
-{#if count > 10}
+<!-- {#if count > 10}
   <p>{count} is greater than 10</p>
 {:else if count < 5}
   <p>{count} is less than 5</p>
 {:else}
   <p>{count} is between 0 and 10</p>
-{/if}
+{/if} -->
 
-<h1 style="color: {selected};">Pick a color</h1>
+<!-- <h1 style="color: {selected};">Pick a color</h1> -->
 
-<div>
+<!-- <div>
   <button
     aria-current={selected === "red"}
     aria-label="red"
@@ -159,9 +166,9 @@
     style="background: violet;"
     on:click={() => (selected = "violet")}
   />
-</div>
+</div> -->
 
-<div>
+<!-- <div>
   {#each colors as color, i}
     <button
       aria-current={selected === color}
@@ -172,11 +179,15 @@
   {/each}
 </div> -->
 
-{#each users as user (user.id)}
+<!-- {#each users as user (user.id)}
   <div>
     <h1>{user.name}</h1>
   </div>
-{/each}
+{/each} -->
+
+<!-- <div on:pointermove={handleMove}>
+  The pointer is at {m.x} x {m.y}
+</div> -->
 
 <!-- <button on:click={handleClick}>generate random number</button>
 
@@ -192,25 +203,31 @@
   /* h1 {
     color: lightblue;
     transition: color 0.2s;
-  }
+  } */
 
-  div {
+  /* div {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 5px;
     max-width: 400px;
-  }
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+  } */
 
-  button {
+  /* button {
     aspect-ratio: 1;
     border-radius: 50%;
     background: var(--color, #fff);
     transform: translate(-2px, -2px);
     filter: drop-shadow(2px, 2px, 3px, rgba(0, 0, 0, 0.2));
     transition: all 0.1s;
-  }
+  } */
 
-  button[aria-current="true"] {
+  /* button[aria-current="true"] {
     transform: none;
     filter: none;
     box-shadow: inset 3px, 3px, 4px, rgba(0, 0, 0, 0.2);
