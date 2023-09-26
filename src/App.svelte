@@ -1,7 +1,7 @@
 <script>
   // let name = "Stuart <button>Minnion</button>";
   // import src from "./assets/giphy.gif";
-  import Nested from "./lib/Nested.svelte";
+  // import Nested from "./lib/Nested.svelte";
   // import PackageInfo from "./lib/PackageInfo.svelte";
   // import { getRandomNumber } from "./lib/utils";
 
@@ -77,7 +77,7 @@
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
 <!-- <img {src} alt="{name} alert" /> -->
-<Nested />
+<!-- <Nested /> -->
 
 <!-- <button on:click={increment}>
   Increase my counter {counter}
@@ -185,10 +185,6 @@
   </div>
 {/each} -->
 
-<!-- <div on:pointermove={handleMove}>
-  The pointer is at {m.x} x {m.y}
-</div> -->
-
 <!-- <button on:click={handleClick}>generate random number</button>
 
 {#await promise}
@@ -198,6 +194,12 @@
 {:catch error}
   <p>{@html error.messsage}</p>
 {/await} -->
+
+<!-- <div on:pointermove={handleMove}>
+  The pointer is at {m.x} x {m.y}
+</div> -->
+
+<button on:click|once={() => alert("clicked")}>Click me</button>
 
 <style>
   /* h1 {
