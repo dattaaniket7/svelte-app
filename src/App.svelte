@@ -88,6 +88,8 @@
   function handleClick() {
     audio.play();
   }
+
+  let name = "world";
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -221,6 +223,12 @@
 <Outer on:message={handleMessage} />
 
 <BigRedButton on:click={handleClick} />
+
+<!-- <input type="text" onchange={(e) => setInput(e.target.value)} /> -->
+
+<input bind:value={name} />
+
+<h1>Hello {name}!</h1>
 
 <style>
   /* h1 {
