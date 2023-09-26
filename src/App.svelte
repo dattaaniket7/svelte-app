@@ -93,6 +93,8 @@
 
   let a = 1;
   let b = 2;
+
+  let yes = false;
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -244,6 +246,21 @@
 </label>
 
 <p>{a} + {b} = {a + b}</p>
+
+<label>
+  <input type="checkbox" bind:checked={yes} />
+  Yes! Send me regular email spam
+</label>
+
+{#if yes}
+  <p>Thank you. We will bombard your inbox and sell your personal details</p>
+{:else}
+  <p>
+    You must opt in to continue. If you are not paying, you are the product.
+  </p>
+{/if}
+
+<button disabled={!yes}>Subscribe</button>
 
 <style>
   /* h1 {
