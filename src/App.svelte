@@ -6,6 +6,8 @@
   // import { getRandomNumber } from "./lib/utils";
   import Inner from "./lib/Inner.svelte";
   import Outer from "./lib/Outer.svelte";
+  import BigRedButton from "./lib/BigRedButton.svelte";
+  import horn from "./assets/horn.mp3";
 
   // let counter = 0;
 
@@ -78,6 +80,13 @@
 
   function handleMessage(event) {
     alert(event.detail.text);
+  }
+
+  const audio = new Audio();
+  audio.src = horn;
+
+  function handleClick() {
+    audio.play();
   }
 </script>
 
@@ -210,6 +219,8 @@
 <!-- <Inner on:message={handleMessage} /> -->
 
 <Outer on:message={handleMessage} />
+
+<BigRedButton on:click={handleClick} />
 
 <style>
   /* h1 {
