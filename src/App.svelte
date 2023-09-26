@@ -1,9 +1,9 @@
 <script>
   // let name = "Stuart <button>Minnion</button>";
   // import src from "./assets/giphy.gif";
-  // import Nested from "./lib/Nested.svelte";
+  import Nested from "./lib/Nested.svelte";
   // import PackageInfo from "./lib/PackageInfo.svelte";
-  import { getRandomNumber } from "./lib/utils";
+  // import { getRandomNumber } from "./lib/utils";
 
   // let counter = 0;
 
@@ -55,24 +55,24 @@
   // ];
   // let selected = colors[0];
 
-  // const users = [
-  //   { name: "oldMonk", id: crypto.randomUUID() },
-  //   { name: "xpert", id: crypto.randomUUID() },
-  //   { name: "kartos", id: crypto.randomUUID() },
-  //   { name: "ed", id: crypto.randomUUID() },
-  // ];
+  const users = [
+    { name: "oldMonk", id: crypto.randomUUID() },
+    { name: "xpert", id: crypto.randomUUID() },
+    { name: "kartos", id: crypto.randomUUID() },
+    { name: "ed", id: crypto.randomUUID() },
+  ];
 
-  let promise = getRandomNumber();
+  // let promise = getRandomNumber();
 
-  function handleClick() {
-    promise = getRandomNumber();
-  }
+  // function handleClick() {
+  //   promise = getRandomNumber();
+  // }
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1>
-<img {src} alt="{name} alert" />
+<img {src} alt="{name} alert" /> -->
 <Nested />
-<button on:click={increment}>
+<!-- <button on:click={increment}>
   Increase my counter {counter}
 </button>
 <h1>{counter}</h1>
@@ -170,15 +170,15 @@
       on:click={() => (selected = color)}>{i + 1}</button
     >
   {/each}
-</div>
+</div> -->
 
 {#each users as user (user.id)}
   <div>
     <h1>{user.name}</h1>
   </div>
-{/each} -->
+{/each}
 
-<button on:click={handleClick}>generate random number</button>
+<!-- <button on:click={handleClick}>generate random number</button>
 
 {#await promise}
   <p>Data is coming in</p>
@@ -186,7 +186,7 @@
   <p>The data is {@html number}</p>
 {:catch error}
   <p>{@html error.messsage}</p>
-{/await}
+{/await} -->
 
 <style>
   /* h1 {
