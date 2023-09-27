@@ -8,6 +8,7 @@
   import Outer from "./lib/Outer.svelte";
   import BigRedButton from "./lib/BigRedButton.svelte";
   import horn from "./assets/horn.mp3";
+  import { marked } from "marked";
 
   // let counter = 0;
 
@@ -95,6 +96,41 @@
   let b = 2;
 
   let yes = false;
+
+  let questions = [
+    {
+      id: 1,
+      text: `Where did you go to school?`,
+    },
+    {
+      id: 2,
+      text: `What is your mother's name?`,
+    },
+    {
+      id: 3,
+      text: `What is another personal fact that an attacker could easily find with Google?`,
+    },
+  ];
+
+  let selected;
+
+  let answer = "";
+
+  function handleSubmit() {
+    alert(
+      `answered question ${selected.id} (${selected.text}) with "${answer}"`
+    );
+  }
+
+  let scoops = 1;
+  let flavours = [];
+
+  const formatter = new Intl.ListFormat("en", {
+    style: "long",
+    type: "conjunction",
+  });
+
+  let value = `Some words are *italic*, some are **bold**\n\n- lists\n- are \n- cool`;
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -221,21 +257,21 @@
   The pointer is at {m.x} x {m.y}
 </div> -->
 
-<button on:click|once={() => alert("clicked")}>Click me</button>
+<!-- <button on:click|once={() => alert("clicked")}>Click me</button> -->
 
 <!-- <Inner on:message={handleMessage} /> -->
 
-<Outer on:message={handleMessage} />
+<!-- <Outer on:message={handleMessage} /> -->
 
-<BigRedButton on:click={handleClick} />
+<!-- <BigRedButton on:click={handleClick} /> -->
 
 <!-- <input type="text" onchange={(e) => setInput(e.target.value)} /> -->
 
-<input bind:value={name} />
+<!-- <input bind:value={name} />
 
-<h1>Hello {name}!</h1>
+<h1>Hello {name}!</h1> -->
 
-<label>
+<!-- <label>
   <input type="number" bind:value={a} min="0" max="10" />
   <input type="range" bind:value={a} min="0" max="10" />
 </label>
@@ -245,9 +281,9 @@
   <input type="range" bind:value={b} min="0" max="10" />
 </label>
 
-<p>{a} + {b} = {a + b}</p>
+<p>{a} + {b} = {a + b}</p> -->
 
-<label>
+<!-- <label>
   <input type="checkbox" bind:checked={yes} />
   Yes! Send me regular email spam
 </label>
@@ -260,7 +296,73 @@
   </p>
 {/if}
 
-<button disabled={!yes}>Subscribe</button>
+<button disabled={!yes}>Subscribe</button> -->
+
+<!-- <h2>Insecurity questions</h2>
+
+<form on:submit|preventDefault={handleSubmit}>
+  <select bind:value={selected} on:change={() => (answer = "")}>
+    {#each questions as question}
+      <option value={question}>{question.text}</option>
+    {/each}
+  </select>
+
+  <input bind:value={answer} />
+
+  <button disabled={!answer} type="submit"> Submit </button>
+</form>
+
+<p>
+  selected question {selected ? selected.id : "[...waiting]"}
+</p> -->
+
+<h2>Size</h2>
+
+{#each [1, 2, 3] as number}
+  <label>
+    <input type="radio" name="scoops" value={number} bind:group={scoops} />
+
+    {number}
+    {number === 1 ? "scoop" : "scoops"}
+  </label>
+{/each}
+
+<h2>Flavours</h2>
+
+<select multiple bind:value={flavours}>
+  {#each ["cookies and cream", "mint choc chip", "raspberry ripple"] as flavour}
+    <!-- <label>
+    <input
+      type="checkbox"
+      name="flavours"
+      value={flavour}
+      bind:group={flavours}
+    />
+
+    {flavour}
+  </label> -->
+    <option>{flavour}</option>
+  {/each}
+</select>
+
+{#if flavours.length === 0}
+  <p>Please select at least one flavour</p>
+{:else if flavours.length > scoops}
+  <p>Can't order more flavours than scoops!</p>
+{:else}
+  <p>
+    You ordered {scoops}
+    {scoops === 1 ? "scoop" : "scoops"} of {formatter.format(flavours)}
+  </p>
+{/if}
+
+<div class="grid">
+  input
+  <textarea bind:value />
+
+  output
+  <div>{@html marked(value)}</div>
+</div>
 
 <style>
   /* h1 {
@@ -295,4 +397,17 @@
     filter: none;
     box-shadow: inset 3px, 3px, 4px, rgba(0, 0, 0, 0.2);
   } */
+
+  .grid {
+    display: grid;
+    grid-template-columns: 5em 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1em;
+    height: 100%;
+  }
+
+  textarea {
+    flex: 1;
+    resize: none;
+  }
 </style>
