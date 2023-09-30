@@ -9,6 +9,7 @@
   import BigRedButton from "./lib/BigRedButton.svelte";
   import horn from "./assets/horn.mp3";
   import { marked } from "marked";
+  import { onMount } from "svelte";
 
   // let counter = 0;
 
@@ -60,12 +61,12 @@
   // ];
   // let selected = colors[0];
 
-  // const users = [
-  //   { name: "oldMonk", id: crypto.randomUUID() },
-  //   { name: "xpert", id: crypto.randomUUID() },
-  //   { name: "kartos", id: crypto.randomUUID() },
-  //   { name: "ed", id: crypto.randomUUID() },
-  // ];
+  let users = [
+    { name: "oldMonk", id: crypto.randomUUID() },
+    { name: "xpert", id: crypto.randomUUID() },
+    { name: "kartos", id: crypto.randomUUID() },
+    { name: "ed", id: crypto.randomUUID() },
+  ];
 
   // let promise = getRandomNumber();
 
@@ -131,6 +132,17 @@
   });
 
   let value = `Some words are *italic*, some are **bold**\n\n- lists\n- are \n- cool`;
+
+  let newUser = "";
+
+  function addUser() {
+    users = [...users, { name: newUser, id: crypto.randomUUID() }];
+    newUser = "";
+  }
+
+  onMount(() => {
+    console.log(users);
+  });
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -237,11 +249,15 @@
   {/each}
 </div> -->
 
-<!-- {#each users as user (user.id)}
+<input type="text" bind:value={newUser} />
+
+<button on:click={addUser}>Add a new User</button>
+
+{#each users as user (user.id)}
   <div>
     <h1>{user.name}</h1>
   </div>
-{/each} -->
+{/each}
 
 <!-- <button on:click={handleClick}>generate random number</button>
 
@@ -316,22 +332,22 @@
   selected question {selected ? selected.id : "[...waiting]"}
 </p> -->
 
-<h2>Size</h2>
+<!-- <h2>Size</h2> -->
 
-{#each [1, 2, 3] as number}
+<!-- {#each [1, 2, 3] as number}
   <label>
     <input type="radio" name="scoops" value={number} bind:group={scoops} />
 
     {number}
     {number === 1 ? "scoop" : "scoops"}
   </label>
-{/each}
+{/each} -->
 
-<h2>Flavours</h2>
+<!-- <h2>Flavours</h2> -->
 
-<select multiple bind:value={flavours}>
+<!-- <select multiple bind:value={flavours}>
   {#each ["cookies and cream", "mint choc chip", "raspberry ripple"] as flavour}
-    <!-- <label>
+    <label>
     <input
       type="checkbox"
       name="flavours"
@@ -340,12 +356,12 @@
     />
 
     {flavour}
-  </label> -->
+  </label>
     <option>{flavour}</option>
   {/each}
-</select>
+</select> -->
 
-{#if flavours.length === 0}
+<!-- {#if flavours.length === 0}
   <p>Please select at least one flavour</p>
 {:else if flavours.length > scoops}
   <p>Can't order more flavours than scoops!</p>
@@ -354,15 +370,15 @@
     You ordered {scoops}
     {scoops === 1 ? "scoop" : "scoops"} of {formatter.format(flavours)}
   </p>
-{/if}
+{/if} -->
 
-<div class="grid">
+<!-- <div class="grid">
   input
   <textarea bind:value />
 
   output
   <div>{@html marked(value)}</div>
-</div>
+</div> -->
 
 <style>
   /* h1 {
