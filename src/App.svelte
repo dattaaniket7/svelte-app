@@ -13,6 +13,7 @@
   // import Eliza from "elizabot";
   // import { beforeUpdate, afterUpdate } from "svelte";
   // import { tick } from "svelte";
+  // import { onDestroy } from "svelte";
   import { count } from "./lib/store";
   import Incrementor from "./lib/Incrementor.svelte";
   import Decrementor from "./lib/Decrementor.svelte";
@@ -220,11 +221,13 @@
   //   this.selectionEnd = selectionEnd;
   // }
 
-  let count_value;
+  // let count_value;
 
-  count.subscribe((value) => {
-    count_value = value;
-  });
+  // const unsubscribe = count.subscribe((value) => {
+  //   count_value = value;
+  // });
+
+  // onDestroy(unsubscribe);
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -486,7 +489,7 @@
 
 <!-- <textarea value={text} on:keydown={handleKeydown} /> -->
 
-<h1>The count is {count_value}</h1>
+<h1>The count is {$count}</h1>
 
 <Incrementor />
 <Decrementor />
