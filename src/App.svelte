@@ -14,11 +14,12 @@
   // import { beforeUpdate, afterUpdate } from "svelte";
   // import { tick } from "svelte";
   // import { onDestroy } from "svelte";
-  import { count } from "./lib/store";
+  // import { count } from "./lib/store";
   // import Incrementor from "./lib/Incrementor.svelte";
   // import Decrementor from "./lib/Decrementor.svelte";
   // import Resetter from "./lib/Resetter.svelte";
   // import { time, elapsed } from "./lib/store";
+  import { name, greeting } from "./lib/store";
 
   // let counter = 0;
 
@@ -497,11 +498,11 @@
 
 <!-- <textarea value={text} on:keydown={handleKeydown} /> -->
 
-<h1>The count is {$count}</h1>
+<!-- <h1>The count is {$count}</h1> -->
 
-<button on:click={count.increment}>+</button>
+<!-- <button on:click={count.increment}>+</button>
 <button on:click={count.decrement}>-</button>
-<button on:click={count.reset}>reset</button>
+<button on:click={count.reset}>reset</button> -->
 
 <!-- <Incrementor /> -->
 <!-- <Decrementor /> -->
@@ -513,6 +514,11 @@
   This page has been opened for {$elapsed}
   {$elapsed === 1 ? "second" : "seconds"}
 </p> -->
+
+<h1>{$greeting}</h1>
+<input bind:value={$name} />
+
+<button on:click={() => ($name += "!")}>Add exclamation mark!</button>
 
 <style>
   /* h1 {
