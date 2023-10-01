@@ -18,7 +18,7 @@
   // import Incrementor from "./lib/Incrementor.svelte";
   // import Decrementor from "./lib/Decrementor.svelte";
   // import Resetter from "./lib/Resetter.svelte";
-  import { time } from "./lib/store";
+  import { time, elapsed } from "./lib/store";
 
   // let counter = 0;
 
@@ -504,6 +504,11 @@
 <Resetter /> -->
 
 <h1>The time is {formatter.format($time)}</h1>
+
+<p>
+  This page has been opened for {$elapsed}
+  {$elapsed === 1 ? "second" : "seconds"}
+</p>
 
 <style>
   /* h1 {
