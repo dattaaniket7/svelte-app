@@ -14,11 +14,11 @@
   // import { beforeUpdate, afterUpdate } from "svelte";
   // import { tick } from "svelte";
   // import { onDestroy } from "svelte";
-  // import { count } from "./lib/store";
+  import { count } from "./lib/store";
   // import Incrementor from "./lib/Incrementor.svelte";
   // import Decrementor from "./lib/Decrementor.svelte";
   // import Resetter from "./lib/Resetter.svelte";
-  import { time, elapsed } from "./lib/store";
+  // import { time, elapsed } from "./lib/store";
 
   // let counter = 0;
 
@@ -230,12 +230,12 @@
 
   // onDestroy(unsubscribe);
 
-  const formatter = new Intl.DateTimeFormat("en", {
-    hour12: true,
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-  });
+  // const formatter = new Intl.DateTimeFormat("en", {
+  //   hour12: true,
+  //   hour: "numeric",
+  //   minute: "2-digit",
+  //   second: "2-digit",
+  // });
 </script>
 
 <!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
@@ -497,18 +497,22 @@
 
 <!-- <textarea value={text} on:keydown={handleKeydown} /> -->
 
-<!-- <h1>The count is {$count}</h1>
+<h1>The count is {$count}</h1>
 
-<Incrementor />
-<Decrementor />
-<Resetter /> -->
+<button on:click={count.increment}>+</button>
+<button on:click={count.decrement}>-</button>
+<button on:click={count.reset}>reset</button>
 
-<h1>The time is {formatter.format($time)}</h1>
+<!-- <Incrementor /> -->
+<!-- <Decrementor /> -->
+<!-- <Resetter /> -->
 
-<p>
+<!-- <h1>The time is {formatter.format($time)}</h1> -->
+
+<!-- <p>
   This page has been opened for {$elapsed}
   {$elapsed === 1 ? "second" : "seconds"}
-</p>
+</p> -->
 
 <style>
   /* h1 {
