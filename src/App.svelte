@@ -10,8 +10,9 @@
   // import horn from "./assets/horn.mp3";
   // import { marked } from "marked";
   // import { onMount } from "svelte";
-  import Eliza from "elizabot";
-  import { beforeUpdate, afterUpdate } from "svelte";
+  // import Eliza from "elizabot";
+  // import { beforeUpdate, afterUpdate } from "svelte";
+  import { tick } from "svelte";
 
   // let counter = 0;
 
@@ -146,50 +147,73 @@
   //   console.log(users);
   // });
 
-  let div;
-  let autoscroll = false;
+  // let div;
+  // let autoscroll = false;
 
-  beforeUpdate(() => {
-    if (div) {
-      const scrollableDistance = div.scrollHeight - div.offsetHeight;
-      autoscroll = div.scrollTop > scrollableDistance - 20;
-    }
-  });
+  // beforeUpdate(() => {
+  //   if (div) {
+  //     const scrollableDistance = div.scrollHeight - div.offsetHeight;
+  //     autoscroll = div.scrollTop > scrollableDistance - 20;
+  //   }
+  // });
 
-  afterUpdate(() => {
-    if (autoscroll) {
-      div.scrollTo(0, div.scrollHeight);
-    }
-  });
+  // afterUpdate(() => {
+  //   if (autoscroll) {
+  //     div.scrollTo(0, div.scrollHeight);
+  //   }
+  // });
 
-  const eliza = new Eliza();
-  const pause = (ms) => new Promise((fulfil) => setTimeout(fulfil, ms));
+  // const eliza = new Eliza();
+  // const pause = (ms) => new Promise((fulfil) => setTimeout(fulfil, ms));
 
-  const typing = { author: "eliza", text: "..." };
+  // const typing = { author: "eliza", text: "..." };
 
-  let comments = [];
+  // let comments = [];
+
+  // async function handleKeydown(event) {
+  //   if (event.key === "Enter" && event.target.value) {
+  //     const comment = {
+  //       author: "user",
+  //       text: event.target.value,
+  //     };
+
+  //     const reply = {
+  //       author: "eliza",
+  //       text: eliza.transform(comment.text),
+  //     };
+
+  //     event.target.value = "";
+  //     comments = [...comments, comment];
+
+  //     await pause(200 * (1 + Math.random()));
+  //     comments = [...comments, typing];
+
+  //     await pause(500 * (1 + Math.random()));
+  //     comments = [...comments, reply].filter((comment) => comment !== typing);
+  //   }
+  // }
+
+  let text = "Select some text and hit the tab key to toggle uppercase";
 
   async function handleKeydown(event) {
-    if (event.key === "Enter" && event.target.value) {
-      const comment = {
-        author: "user",
-        text: event.target.value,
-      };
+    if (event.key !== "Tab") return;
 
-      const reply = {
-        author: "eliza",
-        text: eliza.transform(comment.text),
-      };
+    event.preventDefault();
 
-      event.target.value = "";
-      comments = [...comments, comment];
+    const { selectionStart, selectionEnd, value } = this;
+    const selection = value.slice(selectionStart, selectionEnd);
 
-      await pause(200 * (1 + Math.random()));
-      comments = [...comments, typing];
+    const replacement = /[a-z]/.test(selection)
+      ? selection.toUpperCase()
+      : selection.toLowerCase();
 
-      await pause(500 * (1 + Math.random()));
-      comments = [...comments, reply].filter((comment) => comment !== typing);
-    }
+    text =
+      value.slice(0, selectionStart) + replacement + value.slice(selectionEnd);
+
+    // this has no effect because the DOM hasn't updated yet
+    await tick();
+    this.selectionStart = selectionStart;
+    this.selectionEnd = selectionEnd;
   }
 </script>
 
@@ -428,7 +452,7 @@
   <div>{@html marked(value)}</div>
 </div> -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="phone">
     <div class="chat" bind:this={div}>
       <header>
@@ -448,7 +472,9 @@
 
     <input on:keydown={handleKeydown} />
   </div>
-</div>
+</div> -->
+
+<textarea value={text} on:keydown={handleKeydown} />
 
 <style>
   /* h1 {
@@ -497,72 +523,72 @@
     resize: none;
   } */
 
-  .container {
+  /* .container {
     display: grid;
     place-items: center;
     height: 100%;
-  }
+  } */
 
-  .phone {
+  /* .phone {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-  }
+  } */
 
-  header {
+  /* header {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 4em 0 0 0;
     box-sizing: border-box;
-  }
+  } */
 
-  h1 {
+  /* h1 {
     flex: 1;
     font-size: 1.4em;
     text-align: center;
-  }
+  } */
 
-  .chat {
+  /* .chat {
     height: 0;
     flex: 1 1 auto;
     padding: 0 1em;
     overflow-y: auto;
     scroll-behavior: smooth;
-  }
+  } */
 
-  article {
+  /* article {
     margin: 0 0 0.5em 0;
-  }
+  } */
 
-  .user {
+  /* .user {
     text-align: right;
-  }
+  } */
 
-  span {
+  /* span {
     padding: 0.5em 1em;
     display: inline-block;
-  }
+  } */
 
-  .eliza span {
+  /* .eliza span {
     background-color: var(--bg-1);
     border-radius: 1em 1em 1em 0;
     color: var(--fg-1);
-  }
+  } */
 
-  .user span {
+  /* .user span {
     background-color: #0074d9;
     color: white;
     border-radius: 1em 1em 0 1em;
     word-break: break-all;
-  }
+  } */
 
-  input {
+  /* input {
     margin: 0.5em 1em 1em 1em;
-  }
+  } */
 
-  @media (min-width: 400px) {
+  /* @media (min-width: 400px) {
     .phone {
       background: var(--bg-2);
       position: relative;
@@ -587,11 +613,17 @@
       top: 0;
       border-radius: 0 0 0.5em 0.5em;
     }
-  }
+  } */
 
-  @media (prefers-reduced-motion) {
+  /* @media (prefers-reduced-motion) {
     .chat {
       scroll-behavior: auto;
     }
+  } */
+
+  textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
   }
 </style>
