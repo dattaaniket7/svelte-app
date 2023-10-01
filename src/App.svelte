@@ -1,293 +1,293 @@
 <script>
-  // let name = "Stuart <button>Minnion</button>";
-  // import src from "./assets/giphy.gif";
-  // import Nested from "./lib/Nested.svelte";
-  // import PackageInfo from "./lib/PackageInfo.svelte";
-  // import { getRandomNumber } from "./lib/utils";
-  // import Inner from "./lib/Inner.svelte";
-  // import Outer from "./lib/Outer.svelte";
-  // import BigRedButton from "./lib/BigRedButton.svelte";
-  // import horn from "./assets/horn.mp3";
-  // import { marked } from "marked";
-  // import { onMount } from "svelte";
-  // import Eliza from "elizabot";
-  // import { beforeUpdate, afterUpdate } from "svelte";
-  // import { tick } from "svelte";
-  // import { onDestroy } from "svelte";
-  // import { count } from "./lib/store";
-  // import Incrementor from "./lib/Incrementor.svelte";
-  // import Decrementor from "./lib/Decrementor.svelte";
-  // import Resetter from "./lib/Resetter.svelte";
-  // import { time, elapsed } from "./lib/store";
+  let name = "Stuart <button>Minnion</button>";
+  import src from "./assets/giphy.gif";
+  import Nested from "./lib/Nested.svelte";
+  import PackageInfo from "./lib/PackageInfo.svelte";
+  import { getRandomNumber } from "./lib/utils";
+  import Inner from "./lib/Inner.svelte";
+  import Outer from "./lib/Outer.svelte";
+  import BigRedButton from "./lib/BigRedButton.svelte";
+  import horn from "./assets/horn.mp3";
+  import { marked } from "marked";
+  import { onMount } from "svelte";
+  import Eliza from "elizabot";
+  import { beforeUpdate, afterUpdate } from "svelte";
+  import { tick } from "svelte";
+  import { onDestroy } from "svelte";
+  import { count } from "./lib/store";
+  import Incrementor from "./lib/Incrementor.svelte";
+  import Decrementor from "./lib/Decrementor.svelte";
+  import Resetter from "./lib/Resetter.svelte";
+  import { time, elapsed } from "./lib/store";
   import { name, greeting } from "./lib/store";
 
-  // let counter = 0;
+  let counter = 0;
 
-  // function increment() {
-  //   counter += 1;
-  // }
-  // $: doubled = counter * 2;
+  function increment() {
+    counter += 1;
+  }
+  $: doubled = counter * 2;
 
-  // $: {
-  //   console.log(counter);
-  //   if (counter > 10) alert("BIG BOY");
-  // }
+  $: {
+    console.log(counter);
+    if (counter > 10) alert("BIG BOY");
+  }
 
-  // let todos = ["eat", "sleep", "go to office", "work", "repeat"];
+  let todos = ["eat", "sleep", "go to office", "work", "repeat"];
 
-  // $: {
-  //   console.log(todos);
-  // }
+  $: {
+    console.log(todos);
+  }
 
-  // function addTodo() {
-  //   todos.push("drink");
-  //   todos = todos;
-  //   todos = [...todos, "code"];
-  // }
+  function addTodo() {
+    todos.push("drink");
+    todos = todos;
+    todos = [...todos, "code"];
+  }
 
-  // const pkg = {
-  //   name: "svelte",
-  //   speed: "blazing",
-  //   version: 4,
-  //   website: "https://svelte.dev",
-  // };
+  const pkg = {
+    name: "svelte",
+    speed: "blazing",
+    version: 4,
+    website: "https://svelte.dev",
+  };
 
-  // let user = null;
+  let user = null;
 
-  // let count = 0;
+  let count = 0;
 
-  // function increment() {
-  //   count += 1;
-  // }
+  function increment() {
+    count += 1;
+  }
 
-  // const colors = [
-  //   "red",
-  //   "orange",
-  //   "yellow",
-  //   "green",
-  //   "blue",
-  //   "indigo",
-  //   "violet",
-  // ];
-  // let selected = colors[0];
+  const colors = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet",
+  ];
+  let selected = colors[0];
 
-  // let users = [
-  //   { name: "oldMonk", id: crypto.randomUUID() },
-  //   { name: "xpert", id: crypto.randomUUID() },
-  //   { name: "kartos", id: crypto.randomUUID() },
-  //   { name: "ed", id: crypto.randomUUID() },
-  // ];
+  let users = [
+    { name: "oldMonk", id: crypto.randomUUID() },
+    { name: "xpert", id: crypto.randomUUID() },
+    { name: "kartos", id: crypto.randomUUID() },
+    { name: "ed", id: crypto.randomUUID() },
+  ];
 
-  // let promise = getRandomNumber();
+  let promise = getRandomNumber();
 
-  // function handleClick() {
-  //   promise = getRandomNumber();
-  // }
+  function handleClick() {
+    promise = getRandomNumber();
+  }
 
-  // let m = { x: 0, y: 0 };
-  // function handleMove(event) {
-  //   m.x = event.clientX;
-  //   m.y = event.clientY;
-  // }
+  let m = { x: 0, y: 0 };
+  function handleMove(event) {
+    m.x = event.clientX;
+    m.y = event.clientY;
+  }
 
-  // function handleMessage(event) {
-  //   alert(event.detail.text);
-  // }
+  function handleMessage(event) {
+    alert(event.detail.text);
+  }
 
-  // const audio = new Audio();
-  // audio.src = horn;
+  const audio = new Audio();
+  audio.src = horn;
 
-  // function handleClick() {
-  //   audio.play();
-  // }
+  function handleClick() {
+    audio.play();
+  }
 
-  // let name = "world";
+  let name = "world";
 
-  // let a = 1;
-  // let b = 2;
+  let a = 1;
+  let b = 2;
 
-  // let yes = false;
+  let yes = false;
 
-  // let questions = [
-  //   {
-  //     id: 1,
-  //     text: `Where did you go to school?`,
-  //   },
-  //   {
-  //     id: 2,
-  //     text: `What is your mother's name?`,
-  //   },
-  //   {
-  //     id: 3,
-  //     text: `What is another personal fact that an attacker could easily find with Google?`,
-  //   },
-  // ];
+  let questions = [
+    {
+      id: 1,
+      text: `Where did you go to school?`,
+    },
+    {
+      id: 2,
+      text: `What is your mother's name?`,
+    },
+    {
+      id: 3,
+      text: `What is another personal fact that an attacker could easily find with Google?`,
+    },
+  ];
 
-  // let selected;
+  let selected;
 
-  // let answer = "";
+  let answer = "";
 
-  // function handleSubmit() {
-  //   alert(
-  //     `answered question ${selected.id} (${selected.text}) with "${answer}"`
-  //   );
-  // }
+  function handleSubmit() {
+    alert(
+      `answered question ${selected.id} (${selected.text}) with "${answer}"`
+    );
+  }
 
-  // let scoops = 1;
-  // let flavours = [];
+  let scoops = 1;
+  let flavours = [];
 
-  // const formatter = new Intl.ListFormat("en", {
-  //   style: "long",
-  //   type: "conjunction",
-  // });
+  const formatter = new Intl.ListFormat("en", {
+    style: "long",
+    type: "conjunction",
+  });
 
-  // let value = `Some words are *italic*, some are **bold**\n\n- lists\n- are \n- cool`;
+  let value = `Some words are *italic*, some are **bold**\n\n- lists\n- are \n- cool`;
 
-  // let newUser = "";
+  let newUser = "";
 
-  // function addUser() {
-  //   users = [...users, { name: newUser, id: crypto.randomUUID() }];
-  //   newUser = "";
-  // }
+  function addUser() {
+    users = [...users, { name: newUser, id: crypto.randomUUID() }];
+    newUser = "";
+  }
 
-  // onMount(() => {
-  //   console.log(users);
-  // });
+  onMount(() => {
+    console.log(users);
+  });
 
-  // let div;
-  // let autoscroll = false;
+  let div;
+  let autoscroll = false;
 
-  // beforeUpdate(() => {
-  //   if (div) {
-  //     const scrollableDistance = div.scrollHeight - div.offsetHeight;
-  //     autoscroll = div.scrollTop > scrollableDistance - 20;
-  //   }
-  // });
+  beforeUpdate(() => {
+    if (div) {
+      const scrollableDistance = div.scrollHeight - div.offsetHeight;
+      autoscroll = div.scrollTop > scrollableDistance - 20;
+    }
+  });
 
-  // afterUpdate(() => {
-  //   if (autoscroll) {
-  //     div.scrollTo(0, div.scrollHeight);
-  //   }
-  // });
+  afterUpdate(() => {
+    if (autoscroll) {
+      div.scrollTo(0, div.scrollHeight);
+    }
+  });
 
-  // const eliza = new Eliza();
-  // const pause = (ms) => new Promise((fulfil) => setTimeout(fulfil, ms));
+  const eliza = new Eliza();
+  const pause = (ms) => new Promise((fulfil) => setTimeout(fulfil, ms));
 
-  // const typing = { author: "eliza", text: "..." };
+  const typing = { author: "eliza", text: "..." };
 
-  // let comments = [];
+  let comments = [];
 
-  // async function handleKeydown(event) {
-  //   if (event.key === "Enter" && event.target.value) {
-  //     const comment = {
-  //       author: "user",
-  //       text: event.target.value,
-  //     };
+  async function handleKeydown(event) {
+    if (event.key === "Enter" && event.target.value) {
+      const comment = {
+        author: "user",
+        text: event.target.value,
+      };
 
-  //     const reply = {
-  //       author: "eliza",
-  //       text: eliza.transform(comment.text),
-  //     };
+      const reply = {
+        author: "eliza",
+        text: eliza.transform(comment.text),
+      };
 
-  //     event.target.value = "";
-  //     comments = [...comments, comment];
+      event.target.value = "";
+      comments = [...comments, comment];
 
-  //     await pause(200 * (1 + Math.random()));
-  //     comments = [...comments, typing];
+      await pause(200 * (1 + Math.random()));
+      comments = [...comments, typing];
 
-  //     await pause(500 * (1 + Math.random()));
-  //     comments = [...comments, reply].filter((comment) => comment !== typing);
-  //   }
-  // }
+      await pause(500 * (1 + Math.random()));
+      comments = [...comments, reply].filter((comment) => comment !== typing);
+    }
+  }
 
-  // let text = "Select some text and hit the tab key to toggle uppercase";
+  let text = "Select some text and hit the tab key to toggle uppercase";
 
-  // async function handleKeydown(event) {
-  //   if (event.key !== "Tab") return;
+  async function handleKeydown(event) {
+    if (event.key !== "Tab") return;
 
-  //   event.preventDefault();
+    event.preventDefault();
 
-  //   const { selectionStart, selectionEnd, value } = this;
-  //   const selection = value.slice(selectionStart, selectionEnd);
+    const { selectionStart, selectionEnd, value } = this;
+    const selection = value.slice(selectionStart, selectionEnd);
 
-  //   const replacement = /[a-z]/.test(selection)
-  //     ? selection.toUpperCase()
-  //     : selection.toLowerCase();
+    const replacement = /[a-z]/.test(selection)
+      ? selection.toUpperCase()
+      : selection.toLowerCase();
 
-  //   text =
-  //     value.slice(0, selectionStart) + replacement + value.slice(selectionEnd);
+    text =
+      value.slice(0, selectionStart) + replacement + value.slice(selectionEnd);
 
-  //   // this has no effect because the DOM hasn't updated yet
-  //   await tick();
-  //   this.selectionStart = selectionStart;
-  //   this.selectionEnd = selectionEnd;
-  // }
+    // this has no effect because the DOM hasn't updated yet
+    await tick();
+    this.selectionStart = selectionStart;
+    this.selectionEnd = selectionEnd;
+  }
 
-  // let count_value;
+  let count_value;
 
-  // const unsubscribe = count.subscribe((value) => {
-  //   count_value = value;
-  // });
+  const unsubscribe = count.subscribe((value) => {
+    count_value = value;
+  });
 
-  // onDestroy(unsubscribe);
+  onDestroy(unsubscribe);
 
-  // const formatter = new Intl.DateTimeFormat("en", {
-  //   hour12: true,
-  //   hour: "numeric",
-  //   minute: "2-digit",
-  //   second: "2-digit",
-  // });
+  const formatter = new Intl.DateTimeFormat("en", {
+    hour12: true,
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 </script>
 
-<!-- <h1>Hello {@html name.toUpperCase()}</h1> -->
-<!-- <img {src} alt="{name} alert" /> -->
-<!-- <Nested /> -->
+<h1>Hello {@html name.toUpperCase()}</h1>
+<img {src} alt="{name} alert" />
+<Nested />
 
-<!-- <button on:click={increment}>
+<button on:click={increment}>
   Increase my counter {counter}
 </button>
 <h1>{counter}</h1>
 <button on:click={() => (counter += 1)}>Increment</button>
 <button on:click={() => (counter -= 1)}>Decrement</button>
-<h1>{doubled} Double</h1> -->
+<h1>{doubled} Double</h1>
 
-<!-- <button on:click={addTodo}>Add a new Todo</button> -->
+<button on:click={addTodo}>Add a new Todo</button>
 
-<!-- <h1>So this is coming from APP</h1> -->
-<!-- <Nested x={0} y={0} /> -->
-<!-- <Nested /> -->
+<h1>So this is coming from APP</h1>
+<Nested x={0} y={0} />
+<Nested />
 
-<!-- <PackageInfo
+<PackageInfo
   name={pkg.name}
   speed={pkg.speed}
   version={pkg.version}
   website={pkg.website}
-/> -->
+/>
 
-<!-- <button on:click={() => (user = !user)}>Sign In</button>
+<button on:click={() => (user = !user)}>Sign In</button>
 
 {#if !user}
   <h1>Please sign in</h1>
 {:else}
   <h1>Welcome {@html name} 🚨</h1>
-{/if} -->
+{/if}
 
-<!-- <button on:click={increment}>
+<button on:click={increment}>
   Clicked {count}
   {count === 1 ? "time" : "times"}
-</button> -->
+</button>
 
-<!-- {#if count > 10}
+{#if count > 10}
   <p>{count} is greater than 10</p>
 {:else if count < 5}
   <p>{count} is less than 5</p>
 {:else}
   <p>{count} is between 0 and 10</p>
-{/if} -->
+{/if}
 
-<!-- <h1 style="color: {selected};">Pick a color</h1> -->
+<h1 style="color: {selected};">Pick a color</h1>
 
-<!-- <div>
+<div>
   <button
     aria-current={selected === "red"}
     aria-label="red"
@@ -330,9 +330,9 @@
     style="background: violet;"
     on:click={() => (selected = "violet")}
   />
-</div> -->
+</div>
 
-<!-- <div>
+<div>
   {#each colors as color, i}
     <button
       aria-current={selected === color}
@@ -341,19 +341,19 @@
       on:click={() => (selected = color)}>{i + 1}</button
     >
   {/each}
-</div> -->
+</div>
 
-<!-- <input type="text" bind:value={newUser} /> -->
+<input type="text" bind:value={newUser} />
 
-<!-- <button on:click={addUser}>Add a new User</button> -->
+<button on:click={addUser}>Add a new User</button>
 
-<!-- {#each users as user (user.id)}
+{#each users as user (user.id)}
   <div>
     <h1>{user.name}</h1>
   </div>
-{/each} -->
+{/each}
 
-<!-- <button on:click={handleClick}>generate random number</button>
+<button on:click={handleClick}>generate random number</button>
 
 {#await promise}
   <p>Data is coming in</p>
@@ -361,27 +361,27 @@
   <p>The data is {@html number}</p>
 {:catch error}
   <p>{@html error.messsage}</p>
-{/await} -->
+{/await}
 
-<!-- <div on:pointermove={handleMove}>
+<div on:pointermove={handleMove}>
   The pointer is at {m.x} x {m.y}
-</div> -->
+</div>
 
-<!-- <button on:click|once={() => alert("clicked")}>Click me</button> -->
+<button on:click|once={() => alert("clicked")}>Click me</button>
 
-<!-- <Inner on:message={handleMessage} /> -->
+<Inner on:message={handleMessage} />
 
-<!-- <Outer on:message={handleMessage} /> -->
+<Outer on:message={handleMessage} />
 
-<!-- <BigRedButton on:click={handleClick} /> -->
+<BigRedButton on:click={handleClick} />
 
-<!-- <input type="text" onchange={(e) => setInput(e.target.value)} /> -->
+<input type="text" onchange={(e) => setInput(e.target.value)} />
 
-<!-- <input bind:value={name} />
+<input bind:value={name} />
 
-<h1>Hello {name}!</h1> -->
+<h1>Hello {name}!</h1>
 
-<!-- <label>
+<label>
   <input type="number" bind:value={a} min="0" max="10" />
   <input type="range" bind:value={a} min="0" max="10" />
 </label>
@@ -391,9 +391,9 @@
   <input type="range" bind:value={b} min="0" max="10" />
 </label>
 
-<p>{a} + {b} = {a + b}</p> -->
+<p>{a} + {b} = {a + b}</p>
 
-<!-- <label>
+<label>
   <input type="checkbox" bind:checked={yes} />
   Yes! Send me regular email spam
 </label>
@@ -406,9 +406,9 @@
   </p>
 {/if}
 
-<button disabled={!yes}>Subscribe</button> -->
+<button disabled={!yes}>Subscribe</button>
 
-<!-- <h2>Insecurity questions</h2>
+<h2>Insecurity questions</h2>
 
 <form on:submit|preventDefault={handleSubmit}>
   <select bind:value={selected} on:change={() => (answer = "")}>
@@ -424,38 +424,38 @@
 
 <p>
   selected question {selected ? selected.id : "[...waiting]"}
-</p> -->
+</p>
 
-<!-- <h2>Size</h2> -->
+<h2>Size</h2>
 
-<!-- {#each [1, 2, 3] as number}
+{#each [1, 2, 3] as number}
   <label>
     <input type="radio" name="scoops" value={number} bind:group={scoops} />
 
     {number}
     {number === 1 ? "scoop" : "scoops"}
   </label>
-{/each} -->
+{/each}
 
-<!-- <h2>Flavours</h2> -->
+<h2>Flavours</h2>
 
-<!-- <select multiple bind:value={flavours}>
+<select multiple bind:value={flavours}>
   {#each ["cookies and cream", "mint choc chip", "raspberry ripple"] as flavour}
     <label>
-    <input
-      type="checkbox"
-      name="flavours"
-      value={flavour}
-      bind:group={flavours}
-    />
+      <input
+        type="checkbox"
+        name="flavours"
+        value={flavour}
+        bind:group={flavours}
+      />
 
-    {flavour}
-  </label>
+      {flavour}
+    </label>
     <option>{flavour}</option>
   {/each}
-</select> -->
+</select>
 
-<!-- {#if flavours.length === 0}
+{#if flavours.length === 0}
   <p>Please select at least one flavour</p>
 {:else if flavours.length > scoops}
   <p>Can't order more flavours than scoops!</p>
@@ -464,17 +464,17 @@
     You ordered {scoops}
     {scoops === 1 ? "scoop" : "scoops"} of {formatter.format(flavours)}
   </p>
-{/if} -->
+{/if}
 
-<!-- <div class="grid">
+<div class="grid">
   input
   <textarea bind:value />
 
   output
   <div>{@html marked(value)}</div>
-</div> -->
+</div>
 
-<!-- <div class="container">
+<div class="container">
   <div class="phone">
     <div class="chat" bind:this={div}>
       <header>
@@ -494,26 +494,26 @@
 
     <input on:keydown={handleKeydown} />
   </div>
-</div> -->
+</div>
 
-<!-- <textarea value={text} on:keydown={handleKeydown} /> -->
+<textarea value={text} on:keydown={handleKeydown} />
 
-<!-- <h1>The count is {$count}</h1> -->
+<h1>The count is {$count}</h1>
 
-<!-- <button on:click={count.increment}>+</button>
+<button on:click={count.increment}>+</button>
 <button on:click={count.decrement}>-</button>
-<button on:click={count.reset}>reset</button> -->
+<button on:click={count.reset}>reset</button>
 
-<!-- <Incrementor /> -->
-<!-- <Decrementor /> -->
-<!-- <Resetter /> -->
+<Incrementor />
+<Decrementor />
+<Resetter />
 
-<!-- <h1>The time is {formatter.format($time)}</h1> -->
+<h1>The time is {formatter.format($time)}</h1>
 
-<!-- <p>
+<p>
   This page has been opened for {$elapsed}
   {$elapsed === 1 ? "second" : "seconds"}
-</p> -->
+</p>
 
 <h1>{$greeting}</h1>
 <input bind:value={$name} />
@@ -521,12 +521,12 @@
 <button on:click={() => ($name += "!")}>Add exclamation mark!</button>
 
 <style>
-  /* h1 {
+  h1 {
     color: lightblue;
     transition: color 0.2s;
-  } */
+  }
 
-  /* div {
+  div {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 5px;
@@ -537,102 +537,102 @@
     width: 100%;
     height: 100%;
     padding: 1rem;
-  } */
+  }
 
-  /* button {
+  button {
     aspect-ratio: 1;
     border-radius: 50%;
     background: var(--color, #fff);
     transform: translate(-2px, -2px);
     filter: drop-shadow(2px, 2px, 3px, rgba(0, 0, 0, 0.2));
     transition: all 0.1s;
-  } */
+  }
 
-  /* button[aria-current="true"] {
+  button[aria-current="true"] {
     transform: none;
     filter: none;
     box-shadow: inset 3px, 3px, 4px, rgba(0, 0, 0, 0.2);
-  } */
+  }
 
-  /* .grid {
+  .grid {
     display: grid;
     grid-template-columns: 5em 1fr;
     grid-template-rows: 1fr 1fr;
     grid-gap: 1em;
     height: 100%;
-  } */
+  }
 
-  /* textarea {
+  textarea {
     flex: 1;
     resize: none;
-  } */
+  }
 
-  /* .container {
+  .container {
     display: grid;
     place-items: center;
     height: 100%;
-  } */
+  }
 
-  /* .phone {
+  .phone {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-  } */
+  }
 
-  /* header {
+  header {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 4em 0 0 0;
     box-sizing: border-box;
-  } */
+  }
 
-  /* h1 {
+  h1 {
     flex: 1;
     font-size: 1.4em;
     text-align: center;
-  } */
+  }
 
-  /* .chat {
+  .chat {
     height: 0;
     flex: 1 1 auto;
     padding: 0 1em;
     overflow-y: auto;
     scroll-behavior: smooth;
-  } */
+  }
 
-  /* article {
+  article {
     margin: 0 0 0.5em 0;
-  } */
+  }
 
-  /* .user {
+  .user {
     text-align: right;
-  } */
+  }
 
-  /* span {
+  span {
     padding: 0.5em 1em;
     display: inline-block;
-  } */
+  }
 
-  /* .eliza span {
+  .eliza span {
     background-color: var(--bg-1);
     border-radius: 1em 1em 1em 0;
     color: var(--fg-1);
-  } */
+  }
 
-  /* .user span {
+  .user span {
     background-color: #0074d9;
     color: white;
     border-radius: 1em 1em 0 1em;
     word-break: break-all;
-  } */
+  }
 
-  /* input {
+  input {
     margin: 0.5em 1em 1em 1em;
-  } */
+  }
 
-  /* @media (min-width: 400px) {
+  @media (min-width: 400px) {
     .phone {
       background: var(--bg-2);
       position: relative;
@@ -657,17 +657,17 @@
       top: 0;
       border-radius: 0 0 0.5em 0.5em;
     }
-  } */
+  }
 
-  /* @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion) {
     .chat {
       scroll-behavior: auto;
     }
-  } */
+  }
 
-  /* textarea {
+  textarea {
     width: 100%;
     height: 100%;
     resize: none;
-  } */
+  }
 </style>

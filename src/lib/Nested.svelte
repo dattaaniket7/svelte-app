@@ -1,8 +1,8 @@
 <script>
-  // export let x = 0;
-  // export let y = 0;
-  // let x = 0;
-  // let y = 0;
+  export let x = 0;
+  export let y = 0;
+  let x = 0;
+  let y = 0;
   let mousePosition = { x: 0, y: 0 };
 </script>
 
